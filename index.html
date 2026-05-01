@@ -1,0 +1,647 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Anjani Atelier — Marketing for Bali's Finest Resorts & Villas</title>
+<meta name="description" content="A boutique marketing atelier for Bali's most discerning resorts, private villas, and hospitality brands. Brand, digital, and revenue strategy for luxury stays." />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        fontFamily: {
+          serif: ['"Cormorant Garamond"', 'serif'],
+          sans:  ['Inter', 'system-ui', 'sans-serif'],
+        },
+        colors: {
+          ink:     '#0f1a16',
+          jungle:  '#1f3a31',
+          moss:    '#314a3f',
+          sand:    '#efe7d8',
+          ivory:   '#f7f2e8',
+          bone:    '#ece4d2',
+          gold:    '#b89764',
+          goldsoft:'#d9c39a',
+        },
+        letterSpacing: {
+          'widest-2': '.28em',
+        },
+      }
+    }
+  }
+</script>
+
+<style>
+  html { scroll-behavior: smooth; }
+  body { background: #f7f2e8; color: #0f1a16; }
+
+  .serif { font-family: 'Cormorant Garamond', serif; }
+  .eyebrow {
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: .28em;
+    font-size: 11px;
+  }
+  .rule {
+    display:inline-block; width:32px; height:1px;
+    background: currentColor; opacity:.6; vertical-align: middle; margin-right: 14px;
+  }
+
+  /* Hero parallax-ish background */
+  .hero {
+    background-image:
+      linear-gradient(180deg, rgba(15,26,22,.55) 0%, rgba(15,26,22,.35) 35%, rgba(15,26,22,.75) 100%),
+      url('https://images.unsplash.com/photo-1537956965359-7573183d1f57?auto=format&fit=crop&w=2400&q=80');
+    background-size: cover;
+    background-position: center;
+  }
+
+  .grain::before {
+    content:""; position:absolute; inset:0; pointer-events:none; opacity:.06; mix-blend-mode:overlay;
+    background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)' opacity='.7'/></svg>");
+  }
+
+  /* Marquee */
+  .marquee { display:flex; gap:4rem; animation: scroll 40s linear infinite; }
+  @keyframes scroll { from { transform: translateX(0);} to { transform: translateX(-50%);} }
+
+  /* Nav blur transition */
+  .nav-scrolled { backdrop-filter: blur(14px); background: rgba(247,242,232,.85); border-bottom:1px solid rgba(15,26,22,.08); }
+  .nav-scrolled .nav-link, .nav-scrolled .nav-brand { color: #0f1a16 !important; }
+  .nav-scrolled .nav-cta { background:#0f1a16; color:#f7f2e8; border-color:#0f1a16; }
+
+  /* Card hover */
+  .card { transition: transform .6s cubic-bezier(.2,.7,.2,1), box-shadow .6s; }
+  .card:hover { transform: translateY(-4px); box-shadow: 0 30px 60px -30px rgba(15,26,22,.35); }
+  .card img { transition: transform 1.2s cubic-bezier(.2,.7,.2,1); }
+  .card:hover img { transform: scale(1.05); }
+
+  /* Reveal */
+  .reveal { opacity:0; transform: translateY(18px); transition: opacity .9s ease, transform .9s ease; }
+  .reveal.in { opacity:1; transform: none; }
+
+  /* Number ticker style */
+  .stat-num { font-feature-settings: "lnum" 1, "tnum" 1; }
+
+  /* Subtle divider lines */
+  .hairline { background: linear-gradient(90deg, transparent, rgba(15,26,22,.15), transparent); height:1px; }
+
+  /* Form */
+  .field {
+    background: transparent; border:0; border-bottom:1px solid rgba(247,242,232,.35);
+    padding: 14px 0; color:#f7f2e8; width:100%; font-size: 15px;
+  }
+  .field:focus { outline:none; border-color:#d9c39a; }
+  .field::placeholder { color: rgba(247,242,232,.55); }
+
+  /* Buttons */
+  .btn {
+    display:inline-flex; align-items:center; gap:.6rem;
+    padding: 14px 22px; border:1px solid currentColor; border-radius: 999px;
+    font-size:13px; letter-spacing:.18em; text-transform:uppercase; font-weight:500;
+    transition: background .3s, color .3s, border-color .3s, transform .3s;
+  }
+  .btn-light { color:#f7f2e8; }
+  .btn-light:hover { background:#f7f2e8; color:#0f1a16; }
+  .btn-dark { color:#0f1a16; background:#0f1a16; border-color:#0f1a16; color:#f7f2e8; }
+  .btn-dark:hover { background:#1f3a31; border-color:#1f3a31; }
+  .btn-ghost { color:#0f1a16; }
+  .btn-ghost:hover { background:#0f1a16; color:#f7f2e8; }
+
+  /* Soft image frame */
+  .frame { box-shadow: 0 40px 80px -40px rgba(15,26,22,.45); }
+</style>
+</head>
+<body class="font-sans antialiased">
+
+<!-- =========================== NAV =========================== -->
+<header id="nav" class="fixed top-0 inset-x-0 z-50 transition-all duration-500">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10 h-20 flex items-center justify-between">
+    <a href="#top" class="nav-brand text-ivory tracking-widest-2 text-sm font-medium">
+      ANJANI <span class="opacity-60">ATELIER</span>
+    </a>
+    <nav class="hidden md:flex items-center gap-10 text-[13px] tracking-[.18em] uppercase">
+      <a class="nav-link text-ivory/90 hover:text-goldsoft" href="#services">Services</a>
+      <a class="nav-link text-ivory/90 hover:text-goldsoft" href="#work">Work</a>
+      <a class="nav-link text-ivory/90 hover:text-goldsoft" href="#approach">Approach</a>
+      <a class="nav-link text-ivory/90 hover:text-goldsoft" href="#journal">Journal</a>
+    </nav>
+    <a href="#contact" class="nav-cta btn btn-light text-[12px]">
+      Begin a Conversation
+      <span aria-hidden="true">→</span>
+    </a>
+  </div>
+</header>
+
+<!-- =========================== HERO =========================== -->
+<section id="top" class="hero relative min-h-[100svh] flex flex-col justify-end grain">
+  <div class="relative z-10 max-w-7xl mx-auto w-full px-6 lg:px-10 pb-20 lg:pb-28 pt-32">
+    <p class="eyebrow text-goldsoft mb-8"><span class="rule"></span>Bali · Est. 2017</p>
+    <h1 class="serif text-ivory text-[44px] sm:text-6xl lg:text-[88px] leading-[1.02] font-light max-w-5xl">
+      Marketing for Bali's most <em class="text-goldsoft">quietly extraordinary</em> resorts &amp; private villas.
+    </h1>
+    <div class="mt-10 flex flex-col sm:flex-row sm:items-end sm:justify-between gap-8 max-w-5xl">
+      <p class="text-ivory/85 max-w-xl text-[17px] leading-relaxed font-light">
+        We are a boutique atelier crafting brand, digital and revenue strategy
+        for hospitality brands that value restraint, story and a guest who pays
+        for the difference. No noise, no funnels — just rooms that sell themselves.
+      </p>
+      <div class="flex items-center gap-4">
+        <a href="#work" class="btn btn-light">View Our Work</a>
+        <a href="#contact" class="text-ivory/90 text-[13px] tracking-[.18em] uppercase border-b border-ivory/40 pb-1 hover:text-goldsoft hover:border-goldsoft transition">Enquire →</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scroll cue -->
+  <div class="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 text-ivory/70 text-[10px] tracking-[.4em] uppercase flex flex-col items-center gap-3">
+    <span>Scroll</span>
+    <span class="w-px h-10 bg-ivory/40"></span>
+  </div>
+</section>
+
+<!-- =========================== TRUST MARQUEE =========================== -->
+<section class="bg-ink text-ivory/70 py-8 overflow-hidden border-y border-ivory/10">
+  <div class="marquee whitespace-nowrap text-[13px] tracking-[.28em] uppercase font-light">
+    <div class="flex gap-16 items-center pr-16">
+      <span>Aman Villas Collective</span><span class="opacity-40">✦</span>
+      <span>Soori Estate</span><span class="opacity-40">✦</span>
+      <span>The Lawak Resort</span><span class="opacity-40">✦</span>
+      <span>Capella Ubud Partners</span><span class="opacity-40">✦</span>
+      <span>Bisma Eight</span><span class="opacity-40">✦</span>
+      <span>Villa Sungai</span><span class="opacity-40">✦</span>
+      <span>Como Uma Hospitality</span><span class="opacity-40">✦</span>
+    </div>
+    <div class="flex gap-16 items-center pr-16" aria-hidden="true">
+      <span>Aman Villas Collective</span><span class="opacity-40">✦</span>
+      <span>Soori Estate</span><span class="opacity-40">✦</span>
+      <span>The Lawak Resort</span><span class="opacity-40">✦</span>
+      <span>Capella Ubud Partners</span><span class="opacity-40">✦</span>
+      <span>Bisma Eight</span><span class="opacity-40">✦</span>
+      <span>Villa Sungai</span><span class="opacity-40">✦</span>
+      <span>Como Uma Hospitality</span><span class="opacity-40">✦</span>
+    </div>
+  </div>
+</section>
+
+<!-- =========================== INTRO / MANIFESTO =========================== -->
+<section class="bg-ivory py-28 lg:py-40">
+  <div class="max-w-6xl mx-auto px-6 lg:px-10 grid lg:grid-cols-12 gap-14">
+    <div class="lg:col-span-4 reveal">
+      <p class="eyebrow text-jungle"><span class="rule"></span>The Atelier</p>
+      <p class="mt-6 serif text-ink text-2xl italic font-light">Built in Canggu.<br>Working across the island.</p>
+    </div>
+    <div class="lg:col-span-8 reveal">
+      <h2 class="serif text-ink text-4xl lg:text-5xl font-light leading-[1.15]">
+        We don't fill rooms. We build the kind of brand
+        that has a waitlist.
+      </h2>
+      <p class="mt-8 text-ink/75 text-[17px] leading-[1.8] font-light max-w-2xl">
+        For nine years we've worked beside founders, GMs and revenue teams
+        across Ubud, Uluwatu, Canggu and the Nusa islands — sharpening the
+        story, redesigning the digital experience, and turning direct bookings
+        into the most profitable channel in the house. Our retainer list is
+        intentionally short. Our results are not.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- =========================== STATS =========================== -->
+<section class="bg-jungle text-ivory py-20">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10 grid grid-cols-2 lg:grid-cols-4 gap-y-12 gap-x-10">
+    <div class="reveal">
+      <p class="serif stat-num text-5xl lg:text-6xl font-light text-goldsoft">+218<span class="text-goldsoft/70">%</span></p>
+      <p class="mt-3 text-ivory/75 text-sm leading-relaxed">Average uplift in direct revenue across managed properties, year over year.</p>
+    </div>
+    <div class="reveal">
+      <p class="serif stat-num text-5xl lg:text-6xl font-light text-goldsoft">42<span class="text-goldsoft/70"> nights</span></p>
+      <p class="mt-3 text-ivory/75 text-sm leading-relaxed">Average length-of-stay for repeat guests acquired through our campaigns.</p>
+    </div>
+    <div class="reveal">
+      <p class="serif stat-num text-5xl lg:text-6xl font-light text-goldsoft">9.4<span class="text-goldsoft/70">/10</span></p>
+      <p class="mt-3 text-ivory/75 text-sm leading-relaxed">Tripadvisor rating maintained across the portfolio we steward.</p>
+    </div>
+    <div class="reveal">
+      <p class="serif stat-num text-5xl lg:text-6xl font-light text-goldsoft">17<span class="text-goldsoft/70"> brands</span></p>
+      <p class="mt-3 text-ivory/75 text-sm leading-relaxed">Resort &amp; villa partners we currently work with — and not one more.</p>
+    </div>
+  </div>
+</section>
+
+<!-- =========================== SERVICES =========================== -->
+<section id="services" class="bg-ivory py-28 lg:py-36">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10">
+    <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8 mb-16">
+      <div class="reveal">
+        <p class="eyebrow text-jungle"><span class="rule"></span>Services</p>
+        <h2 class="mt-5 serif text-ink text-4xl lg:text-5xl font-light max-w-2xl leading-tight">
+          Five disciplines, woven into one practice.
+        </h2>
+      </div>
+      <p class="reveal text-ink/65 max-w-md font-light leading-relaxed">
+        We engage as a fractional marketing department — strategy, craft and
+        execution, billed against a single monthly retainer.
+      </p>
+    </div>
+
+    <div class="hairline mb-2"></div>
+
+    <!-- Service rows -->
+    <div class="divide-y divide-ink/10">
+      <!-- 01 -->
+      <article class="grid grid-cols-12 gap-6 py-10 lg:py-12 group reveal">
+        <p class="col-span-2 lg:col-span-1 serif text-2xl text-jungle/70 font-light">01</p>
+        <div class="col-span-10 lg:col-span-4">
+          <h3 class="serif text-2xl lg:text-3xl text-ink font-light">Brand &amp; Identity</h3>
+        </div>
+        <p class="col-span-12 lg:col-span-5 text-ink/70 leading-relaxed font-light">
+          Naming, narrative architecture, visual identity and the editorial
+          tone that makes a property feel inevitable rather than designed.
+        </p>
+        <div class="col-span-12 lg:col-span-2 flex lg:justify-end items-start text-jungle/70 text-sm tracking-[.2em] uppercase">
+          <span class="opacity-0 group-hover:opacity-100 transition">→ Detail</span>
+        </div>
+      </article>
+      <!-- 02 -->
+      <article class="grid grid-cols-12 gap-6 py-10 lg:py-12 group reveal">
+        <p class="col-span-2 lg:col-span-1 serif text-2xl text-jungle/70 font-light">02</p>
+        <div class="col-span-10 lg:col-span-4">
+          <h3 class="serif text-2xl lg:text-3xl text-ink font-light">Digital &amp; Web</h3>
+        </div>
+        <p class="col-span-12 lg:col-span-5 text-ink/70 leading-relaxed font-light">
+          Editorial websites, direct booking flows and CRM journeys engineered
+          to lift conversion — and lower OTA dependency.
+        </p>
+        <div class="col-span-12 lg:col-span-2 flex lg:justify-end items-start text-jungle/70 text-sm tracking-[.2em] uppercase">
+          <span class="opacity-0 group-hover:opacity-100 transition">→ Detail</span>
+        </div>
+      </article>
+      <!-- 03 -->
+      <article class="grid grid-cols-12 gap-6 py-10 lg:py-12 group reveal">
+        <p class="col-span-2 lg:col-span-1 serif text-2xl text-jungle/70 font-light">03</p>
+        <div class="col-span-10 lg:col-span-4">
+          <h3 class="serif text-2xl lg:text-3xl text-ink font-light">Performance &amp; Revenue</h3>
+        </div>
+        <p class="col-span-12 lg:col-span-5 text-ink/70 leading-relaxed font-light">
+          Paid social, search, metasearch and rate strategy — managed against
+          RevPAR, ADR and direct contribution targets agreed each quarter.
+        </p>
+        <div class="col-span-12 lg:col-span-2 flex lg:justify-end items-start text-jungle/70 text-sm tracking-[.2em] uppercase">
+          <span class="opacity-0 group-hover:opacity-100 transition">→ Detail</span>
+        </div>
+      </article>
+      <!-- 04 -->
+      <article class="grid grid-cols-12 gap-6 py-10 lg:py-12 group reveal">
+        <p class="col-span-2 lg:col-span-1 serif text-2xl text-jungle/70 font-light">04</p>
+        <div class="col-span-10 lg:col-span-4">
+          <h3 class="serif text-2xl lg:text-3xl text-ink font-light">Photography &amp; Film</h3>
+        </div>
+        <p class="col-span-12 lg:col-span-5 text-ink/70 leading-relaxed font-light">
+          A standing crew of photographers, cinematographers and stylists who
+          live on the island and understand light, ritual and slow looking.
+        </p>
+        <div class="col-span-12 lg:col-span-2 flex lg:justify-end items-start text-jungle/70 text-sm tracking-[.2em] uppercase">
+          <span class="opacity-0 group-hover:opacity-100 transition">→ Detail</span>
+        </div>
+      </article>
+      <!-- 05 -->
+      <article class="grid grid-cols-12 gap-6 py-10 lg:py-12 group reveal">
+        <p class="col-span-2 lg:col-span-1 serif text-2xl text-jungle/70 font-light">05</p>
+        <div class="col-span-10 lg:col-span-4">
+          <h3 class="serif text-2xl lg:text-3xl text-ink font-light">Press &amp; Partnerships</h3>
+        </div>
+        <p class="col-span-12 lg:col-span-5 text-ink/70 leading-relaxed font-light">
+          Editorial placements in Condé Nast Traveller, Mr &amp; Mrs Smith,
+          Robb Report and the agencies that move private clients quietly.
+        </p>
+        <div class="col-span-12 lg:col-span-2 flex lg:justify-end items-start text-jungle/70 text-sm tracking-[.2em] uppercase">
+          <span class="opacity-0 group-hover:opacity-100 transition">→ Detail</span>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- =========================== WORK / FEATURED =========================== -->
+<section id="work" class="bg-bone py-28 lg:py-36 grain relative">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10 relative">
+    <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8 mb-14">
+      <div class="reveal">
+        <p class="eyebrow text-jungle"><span class="rule"></span>Selected Work</p>
+        <h2 class="mt-5 serif text-ink text-4xl lg:text-5xl font-light max-w-2xl leading-tight">
+          A portfolio held to a single standard.
+        </h2>
+      </div>
+      <a href="#contact" class="btn btn-ghost reveal">All Case Studies →</a>
+    </div>
+
+    <div class="grid lg:grid-cols-12 gap-8 lg:gap-10">
+      <!-- Item 1 -->
+      <a href="#" class="card group lg:col-span-7 block reveal">
+        <div class="overflow-hidden rounded-sm frame aspect-[4/3]">
+          <img class="w-full h-full object-cover" src="https://images.unsplash.com/photo-1582719508461-905c673771fd?auto=format&fit=crop&w=1600&q=80" alt="Resort pool at dusk">
+        </div>
+        <div class="mt-6 flex items-end justify-between">
+          <div>
+            <p class="eyebrow text-jungle/70">Ubud · Resort Repositioning</p>
+            <h3 class="serif text-3xl text-ink font-light mt-2">Padma Tirta Retreat</h3>
+          </div>
+          <span class="text-ink/60 text-sm tracking-[.2em] uppercase group-hover:text-jungle transition">View →</span>
+        </div>
+      </a>
+      <!-- Item 2 -->
+      <a href="#" class="card group lg:col-span-5 block reveal">
+        <div class="overflow-hidden rounded-sm frame aspect-[4/5]">
+          <img class="w-full h-full object-cover" src="https://images.unsplash.com/photo-1540541338287-41700207dee6?auto=format&fit=crop&w=1400&q=80" alt="Cliffside villa">
+        </div>
+        <div class="mt-6 flex items-end justify-between">
+          <div>
+            <p class="eyebrow text-jungle/70">Uluwatu · Brand &amp; Web</p>
+            <h3 class="serif text-3xl text-ink font-light mt-2">Casa Lima Villas</h3>
+          </div>
+          <span class="text-ink/60 text-sm tracking-[.2em] uppercase group-hover:text-jungle transition">View →</span>
+        </div>
+      </a>
+      <!-- Item 3 -->
+      <a href="#" class="card group lg:col-span-5 block reveal">
+        <div class="overflow-hidden rounded-sm frame aspect-[4/5]">
+          <img class="w-full h-full object-cover" src="https://images.unsplash.com/photo-1602002418082-a4443e081dd1?auto=format&fit=crop&w=1400&q=80" alt="Tropical bedroom">
+        </div>
+        <div class="mt-6 flex items-end justify-between">
+          <div>
+            <p class="eyebrow text-jungle/70">Canggu · Direct Revenue</p>
+            <h3 class="serif text-3xl text-ink font-light mt-2">Hotel Mahaya</h3>
+          </div>
+          <span class="text-ink/60 text-sm tracking-[.2em] uppercase group-hover:text-jungle transition">View →</span>
+        </div>
+      </a>
+      <!-- Item 4 -->
+      <a href="#" class="card group lg:col-span-7 block reveal">
+        <div class="overflow-hidden rounded-sm frame aspect-[4/3]">
+          <img class="w-full h-full object-cover" src="https://images.unsplash.com/photo-1571896349842-33c89424de2d?auto=format&fit=crop&w=1600&q=80" alt="Villa with rice paddies">
+        </div>
+        <div class="mt-6 flex items-end justify-between">
+          <div>
+            <p class="eyebrow text-jungle/70">Sidemen · Launch Campaign</p>
+            <h3 class="serif text-3xl text-ink font-light mt-2">Selo &amp; Sumber</h3>
+          </div>
+          <span class="text-ink/60 text-sm tracking-[.2em] uppercase group-hover:text-jungle transition">View →</span>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- =========================== APPROACH =========================== -->
+<section id="approach" class="bg-ink text-ivory py-28 lg:py-36 relative grain">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10">
+    <div class="grid lg:grid-cols-12 gap-12">
+      <div class="lg:col-span-4 reveal">
+        <p class="eyebrow text-goldsoft"><span class="rule"></span>The Approach</p>
+        <h2 class="mt-5 serif text-4xl lg:text-5xl font-light leading-tight">
+          A slow, deliberate way of working.
+        </h2>
+        <p class="mt-6 text-ivory/70 font-light leading-relaxed max-w-md">
+          Every engagement begins on property. We stay, we listen, we walk
+          the gardens at sunrise. Strategy follows.
+        </p>
+      </div>
+
+      <ol class="lg:col-span-8 grid sm:grid-cols-2 gap-x-10 gap-y-12">
+        <li class="reveal">
+          <p class="serif text-goldsoft text-xl mb-3">i.</p>
+          <h3 class="serif text-2xl font-light">Immersion</h3>
+          <p class="mt-3 text-ivory/70 font-light leading-relaxed">
+            A 3–4 night stay with the founders, the team, and — quietly — the guest.
+          </p>
+        </li>
+        <li class="reveal">
+          <p class="serif text-goldsoft text-xl mb-3">ii.</p>
+          <h3 class="serif text-2xl font-light">Audit &amp; Architecture</h3>
+          <p class="mt-3 text-ivory/70 font-light leading-relaxed">
+            Brand, channel, rate and competitive review distilled into a single document.
+          </p>
+        </li>
+        <li class="reveal">
+          <p class="serif text-goldsoft text-xl mb-3">iii.</p>
+          <h3 class="serif text-2xl font-light">Craft</h3>
+          <p class="mt-3 text-ivory/70 font-light leading-relaxed">
+            Identity systems, photography direction, copy and digital assets produced in-house.
+          </p>
+        </li>
+        <li class="reveal">
+          <p class="serif text-goldsoft text-xl mb-3">iv.</p>
+          <h3 class="serif text-2xl font-light">Stewardship</h3>
+          <p class="mt-3 text-ivory/70 font-light leading-relaxed">
+            Ongoing campaigns, revenue tracking and quarterly counsel — for as long as you'll have us.
+          </p>
+        </li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<!-- =========================== TESTIMONIAL =========================== -->
+<section class="bg-ivory py-28 lg:py-40">
+  <div class="max-w-5xl mx-auto px-6 lg:px-10 text-center">
+    <p class="eyebrow text-jungle reveal"><span class="rule"></span>In Their Words</p>
+    <blockquote class="mt-10 serif text-ink text-3xl lg:text-5xl font-light leading-[1.25] reveal">
+      "Anjani rebuilt the way we speak about ourselves. Within six months our
+      direct bookings <em class="text-jungle">overtook every OTA combined</em> — and
+      the guests who arrive now are simply the right ones."
+    </blockquote>
+    <div class="mt-12 flex items-center justify-center gap-4 reveal">
+      <img class="w-12 h-12 rounded-full object-cover" src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=200&q=80" alt="">
+      <div class="text-left">
+        <p class="text-ink font-medium text-sm">Saskia Wijaya</p>
+        <p class="text-ink/60 text-sm">General Manager, Padma Tirta Retreat</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =========================== JOURNAL =========================== -->
+<section id="journal" class="bg-bone py-28 lg:py-36">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10">
+    <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8 mb-14">
+      <div class="reveal">
+        <p class="eyebrow text-jungle"><span class="rule"></span>Journal</p>
+        <h2 class="mt-5 serif text-ink text-4xl lg:text-5xl font-light max-w-2xl leading-tight">
+          Field notes from the island.
+        </h2>
+      </div>
+      <a href="#" class="btn btn-ghost reveal">Read All →</a>
+    </div>
+
+    <div class="grid lg:grid-cols-3 gap-10">
+      <article class="reveal">
+        <div class="overflow-hidden frame aspect-[5/6]">
+          <img class="w-full h-full object-cover" src="https://images.unsplash.com/photo-1593693411515-c20261bcad6e?auto=format&fit=crop&w=1200&q=80" alt="">
+        </div>
+        <p class="eyebrow text-jungle/70 mt-6">Essay · 7 min</p>
+        <h3 class="serif text-2xl text-ink font-light mt-3 leading-snug">
+          Why your villa's website is leaking 38% of its highest-value bookings.
+        </h3>
+      </article>
+      <article class="reveal">
+        <div class="overflow-hidden frame aspect-[5/6]">
+          <img class="w-full h-full object-cover" src="https://images.unsplash.com/photo-1604999333679-b86d54738315?auto=format&fit=crop&w=1200&q=80" alt="">
+        </div>
+        <p class="eyebrow text-jungle/70 mt-6">Field Note · 4 min</p>
+        <h3 class="serif text-2xl text-ink font-light mt-3 leading-snug">
+          The new luxury guest in Bali — quieter, longer, and far harder to reach.
+        </h3>
+      </article>
+      <article class="reveal">
+        <div class="overflow-hidden frame aspect-[5/6]">
+          <img class="w-full h-full object-cover" src="https://images.unsplash.com/photo-1518548419970-58e3b4079ab2?auto=format&fit=crop&w=1200&q=80" alt="">
+        </div>
+        <p class="eyebrow text-jungle/70 mt-6">Case Study · 9 min</p>
+        <h3 class="serif text-2xl text-ink font-light mt-3 leading-snug">
+          How a 12-key estate in Sidemen reached 78% direct in its first season.
+        </h3>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- =========================== CONTACT =========================== -->
+<section id="contact" class="bg-jungle text-ivory py-28 lg:py-36 grain relative">
+  <div class="max-w-6xl mx-auto px-6 lg:px-10 grid lg:grid-cols-12 gap-14">
+    <div class="lg:col-span-5 reveal">
+      <p class="eyebrow text-goldsoft"><span class="rule"></span>Begin</p>
+      <h2 class="mt-5 serif text-4xl lg:text-6xl font-light leading-[1.1]">
+        Tell us about your<br>property.
+      </h2>
+      <p class="mt-8 text-ivory/75 font-light leading-relaxed max-w-md">
+        We take on a small number of new partners each year. Share a few details
+        and we'll respond within two working days, personally.
+      </p>
+
+      <div class="mt-12 space-y-4 text-sm text-ivory/70">
+        <p><span class="text-goldsoft tracking-[.2em] uppercase text-[11px] mr-3">Studio</span> Jl. Pantai Batu Bolong 64, Canggu, Bali</p>
+        <p><span class="text-goldsoft tracking-[.2em] uppercase text-[11px] mr-3">Email</span> hello@anjani-atelier.co</p>
+        <p><span class="text-goldsoft tracking-[.2em] uppercase text-[11px] mr-3">Whatsapp</span> +62 812 3700 4421</p>
+      </div>
+    </div>
+
+    <form class="lg:col-span-7 reveal" onsubmit="event.preventDefault(); this.querySelector('button').textContent='Sent — terima kasih ✦'">
+      <div class="grid sm:grid-cols-2 gap-x-8">
+        <label class="block">
+          <span class="eyebrow text-goldsoft">Your Name</span>
+          <input class="field mt-2" type="text" placeholder="Aria Putra" required>
+        </label>
+        <label class="block">
+          <span class="eyebrow text-goldsoft">Email</span>
+          <input class="field mt-2" type="email" placeholder="aria@property.com" required>
+        </label>
+        <label class="block mt-8">
+          <span class="eyebrow text-goldsoft">Property</span>
+          <input class="field mt-2" type="text" placeholder="Name of your villa or resort">
+        </label>
+        <label class="block mt-8">
+          <span class="eyebrow text-goldsoft">Region</span>
+          <select class="field mt-2 bg-jungle">
+            <option class="text-ink">Ubud</option>
+            <option class="text-ink">Canggu / Berawa</option>
+            <option class="text-ink">Uluwatu / Bukit</option>
+            <option class="text-ink">Seminyak</option>
+            <option class="text-ink">Sidemen / Karangasem</option>
+            <option class="text-ink">Nusa Islands</option>
+            <option class="text-ink">Other</option>
+          </select>
+        </label>
+        <label class="block mt-8 sm:col-span-2">
+          <span class="eyebrow text-goldsoft">A Few Words</span>
+          <textarea class="field mt-2" rows="3" placeholder="Where you are now, where you'd like to go."></textarea>
+        </label>
+      </div>
+
+      <div class="mt-12 flex items-center justify-between">
+        <p class="text-ivory/60 text-xs">We respond personally within 48 hours.</p>
+        <button class="btn btn-light" type="submit">
+          Send Enquiry
+          <span aria-hidden="true">→</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</section>
+
+<!-- =========================== FOOTER =========================== -->
+<footer class="bg-ink text-ivory/70 pt-20 pb-10">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10">
+    <div class="grid lg:grid-cols-12 gap-10 pb-16">
+      <div class="lg:col-span-5">
+        <p class="serif text-ivory text-4xl lg:text-5xl font-light leading-tight">
+          Anjani Atelier.
+        </p>
+        <p class="mt-5 max-w-sm text-sm leading-relaxed">
+          A boutique marketing practice for Bali's high-end resorts and private villas.
+          Brand, digital, revenue — done quietly, done well.
+        </p>
+      </div>
+      <div class="lg:col-span-2">
+        <p class="eyebrow text-goldsoft mb-5">Atelier</p>
+        <ul class="space-y-3 text-sm">
+          <li><a href="#services" class="hover:text-goldsoft">Services</a></li>
+          <li><a href="#work" class="hover:text-goldsoft">Work</a></li>
+          <li><a href="#approach" class="hover:text-goldsoft">Approach</a></li>
+          <li><a href="#journal" class="hover:text-goldsoft">Journal</a></li>
+        </ul>
+      </div>
+      <div class="lg:col-span-2">
+        <p class="eyebrow text-goldsoft mb-5">Contact</p>
+        <ul class="space-y-3 text-sm">
+          <li>Canggu, Bali</li>
+          <li>hello@anjani-atelier.co</li>
+          <li>+62 812 3700 4421</li>
+        </ul>
+      </div>
+      <div class="lg:col-span-3">
+        <p class="eyebrow text-goldsoft mb-5">Field Notes</p>
+        <p class="text-sm mb-4">A short letter, four times a year. No noise.</p>
+        <form class="flex border-b border-ivory/30 pb-2" onsubmit="event.preventDefault(); this.querySelector('button').textContent='✓'">
+          <input type="email" placeholder="your@email.com" class="bg-transparent flex-1 outline-none text-sm text-ivory placeholder-ivory/40">
+          <button class="text-goldsoft text-sm tracking-[.2em] uppercase">Join →</button>
+        </form>
+      </div>
+    </div>
+
+    <div class="hairline opacity-30"></div>
+
+    <div class="pt-8 flex flex-col md:flex-row justify-between gap-3 text-xs text-ivory/50">
+      <p>© 2026 Anjani Atelier. Made on Jalan Batu Bolong with cold kopi tubruk.</p>
+      <p class="tracking-[.2em] uppercase">Privacy · Terms · Imprint</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Scroll-aware nav
+  const nav = document.getElementById('nav');
+  const onScroll = () => {
+    if (window.scrollY > 60) nav.classList.add('nav-scrolled');
+    else nav.classList.remove('nav-scrolled');
+  };
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  // Reveal on scroll
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+    });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>
+</body>
+</html>
